@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class EmployeeTableModel extends AbstractTableModel {
 
-    private String[] columnNames = {"first_name", "last_name"};
+    private String[] columnNames = {"col_first_name", "col_last_name", "col_job_id"};
 
     private Map<Integer, Map<String, String>> data;
 
@@ -28,7 +28,12 @@ public class EmployeeTableModel extends AbstractTableModel {
     }
 
     @Override
-    public Object getValueAt(int i, int i1) {
-        return data.get(i).get(columnNames[i1]);
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        return data.get(rowIndex).get(columnNames[columnIndex]);
+    }
+
+    public Map<String, String> getRowData(int rowIndex)
+    {
+        return data.get(rowIndex);
     }
 }
